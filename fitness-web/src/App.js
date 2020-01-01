@@ -12,20 +12,39 @@ import StoryCarousal from './Components/StoryCarousal';
 import TestimonyCarousel from './Components/TestimonyCarousel';
 import Test2 from './Components/Test2';
 import Signinpopup from './Components/Signinpopup';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
+import Home from './Components/Home'
+import About from './Components/About'
+import Dashboard from './Components/Dashboard'
+import Contact from './Components/Contact'
+import NoMatch from './Components/NoMatch'
+import HomePageNavbar from './Components/HomePageNavbar';
 const style=
 {
   margin: '1rem 0rem',
   padding: '0rem 0rem',
   
 }
+const mycontext = React.createContext();
 class App extends Component {
   constructor(props) {
     super(props)
 
     this.state = {
-         showsignin: false
+         showsignin: false,
+         login:false
     }
 }
+
+loggingin =()=>
+{
+  this.setState(
+    {
+      login:true
+    }
+  )
+}
+
 signinpopup =()=>
 {
   console.log("In Singninpopu")
@@ -38,6 +57,9 @@ signinpopup =()=>
   render() {
     return (
       <div className="App" style={this.state.showsignin?{opacity:this.state.showsignin ? 0.6:1,overflow:'hidden'}:null}>
+       <mycontext.Provider value="I am context provider">
+        {this.state.login ? <HomePageNavbar></HomePageNavbar> :
+        <React.Fragment>
         <HomeNavbar onClose={this.signinpopup} ></HomeNavbar>
         <ManiPage></ManiPage>
         {
@@ -88,7 +110,13 @@ signinpopup =()=>
           </Col>
         </Row>
         </Container>
+        </React.Fragment>
+        
+          }
+          </mycontext.Provider>
       </div>
+  
+   
     );
   }
 }
