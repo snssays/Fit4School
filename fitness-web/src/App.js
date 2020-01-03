@@ -19,6 +19,7 @@ import Dashboard from './Components/Dashboard'
 import Contact from './Components/Contact'
 import NoMatch from './Components/NoMatch'
 import HomePageNavbar from './Components/HomePageNavbar';
+import {MycontextProvide} from './Components/MyProvider';
 const style=
 {
   margin: '1rem 0rem',
@@ -43,6 +44,7 @@ loggingin =()=>
       login:true
     }
   )
+  console.log('I am here')
 }
 
 signinpopup =()=>
@@ -56,8 +58,12 @@ signinpopup =()=>
 }
   render() {
     return (
+     
       <div className="App" style={this.state.showsignin?{opacity:this.state.showsignin ? 0.6:1,overflow:'hidden'}:null}>
-       <mycontext.Provider value="I am context provider">
+       <MycontextProvide value={{
+         state:this.state.login,
+         loginstate:this.loggingin
+       }}>
         {this.state.login ? <HomePageNavbar></HomePageNavbar> :
         <React.Fragment>
         <HomeNavbar onClose={this.signinpopup} ></HomeNavbar>
@@ -113,9 +119,8 @@ signinpopup =()=>
         </React.Fragment>
         
           }
-          </mycontext.Provider>
+          </MycontextProvide>
       </div>
-  
    
     );
   }
