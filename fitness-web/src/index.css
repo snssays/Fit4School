@@ -1,45 +1,42 @@
-body,html {
-  
+body,
+html {
   width: 100vw;
-  height:100vh;
+  height: 100vh;
   background-color: gray;
 }
 
-body::-webkit-scrollbar
-{
+body::-webkit-scrollbar {
   display: none;
 }
-body { overflow: -moz-scrollbars-none; }
+body {
+  overflow: -moz-scrollbars-none;
+}
 
- 
-body::-webkit-scrollbar { width: 0 !important }
+body::-webkit-scrollbar {
+  width: 0 !important;
+}
 
-.HomepageNav 
-{
+.HomepageNav {
   margin: 0% 2%;
   height: 100%;
   position: relative;
   z-index: 1;
 }
 
-.logo
-{
-  color:Red;
+.logo {
+  color: Red;
   float: left;
   font-size: 2rem;
   font-weight: bold;
-  
 }
-.signin
-{
+.signin {
   float: right;
   color: white;
   padding-top: 8px;
   position: relative;
 }
-.signin button
-{
-  background-color:red;
+.signin button {
+  background-color: red;
   padding: 1.5spx 2px;
   border-style: none;
   border-radius: 0.5rem;
@@ -51,35 +48,29 @@ body::-webkit-scrollbar { width: 0 !important }
   outline-color: none;
   color: aliceblue;
 }
-.signin button:active
-{
+.signin button:active {
   outline: none;
 }
-.signin button:focus
-{
+.signin button:focus {
   outline: 0;
 }
-.MainPage
-{
+.MainPage {
   margin-bottom: 0.5rem;
   padding: 3rem;
 }
 
-.MainPage
-{
-  background-image: url("./Components/Gymbackgroundimage.jpg");
+.MainPage {
+  background-image: url("./Data/Gymbackgroundimage.jpg");
   background-repeat: no-repeat;
   background-size: cover;
 }
 
-.App .first-block
-{
-  background-color:rgb(211, 180, 180);
+.App .first-block {
+  background-color: rgb(211, 180, 180);
   background-repeat: no-repeat;
   background-size: cover;
 }
 
-#signin-portal
-{
+#signin-portal {
   z-index: 2;
 }
