@@ -1,23 +1,20 @@
-import React, { Component } from 'react'
-import App from '../App';
-import MyProvider, { MycontextConsumer } from './MyProvider'
-import { Button } from 'react-bootstrap';
-class Home extends Component {
-    render() {
-        return (
-            <React.Fragment>
-               <MycontextConsumer>
-                   {(context)=>
-                   (
-                       <React.Fragment>
-                    <p>I am in the Homepage</p>
-                   <Button onClick={context.loginstate}>ClickHere</Button>
-                   </React.Fragment>
-                   )}
-               </MycontextConsumer>
-            </React.Fragment>
-        )
-    }
+import React, { useContext } from "react";
+import { Button } from "react-bootstrap";
+import { LoginContext } from "../App";
+function Home() {
+  const loginContext = useContext(LoginContext);
+
+  return (
+    <React.Fragment>
+      <p> User is logged in - Home Page </p>
+      {console.log(
+        `Authentication status of the user is ${loginContext.loginStatus}`
+      )}
+      <Button onClick={loginContext.toggleLoginStatus}>
+        Toggle Authentication
+      </Button>
+    </React.Fragment>
+  );
 }
 
-export default Home
+export default Home;
