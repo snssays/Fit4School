@@ -10,9 +10,7 @@ function Home() {
       {console.log(
         `Authentication status of the user is ${loginContext.loginStatus}`
       )}
-      <Button onClick={loginContext.toggleLoginStatus}>
-        Toggle Authentication
-      </Button>
+      <Button onClick={loginContext.toggleLoginStatus}>Log out</Button>
     </React.Fragment>
   );
 }
