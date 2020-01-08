@@ -7,7 +7,7 @@ import MainPage from "./Components/MainPage";
 import MiddleContainer from "./Components/MiddleContainer";
 import SignInPopUp from "./Components/Signinpopup";
 
-export const isUserAuthenticatedContext = React.createContext();
+export const LoginContext = React.createContext();
 
 class App extends Component {
   constructor(props) {
@@ -15,17 +15,16 @@ class App extends Component {
 
     this.state = {
       showSignInPopUp: false,
-      isUserAuthenticated: true
+      login: true
     };
   }
 
-  toggleisUserAuthenticatedStatus = () => {
+  toggleLoginStatus = () => {
     console.log(
-      `Inside toggle isUserAuthenticated status - value is ${!this
-        .toggleisUserAuthenticatedStatus}`
+      `Inside toggle login status - value is ${!this.toggleLoginStatus}`
     );
     this.setState({
-      isUserAuthenticated: !this.state.isUserAuthenticated
+      login: !this.state.login
     });
   };
 
@@ -40,20 +39,19 @@ class App extends Component {
   };
 
   render() {
-    const { showSignInPopUp, isUserAuthenticated } = this.state;
+    const { showSignInPopUp, login } = this.state;
     const backGroundForSignInPopUp = showSignInPopUp
       ? { opacity: 0.6, overflow: "hidden" }
       : { opacity: 1 };
     return (
       <div className="App" style={backGroundForSignInPopUp}>
-        <isUserAuthenticatedContext.Provider
+        <LoginContext.Provider
           value={{
-            isUserAuthenticatedStatus: isUserAuthenticated,
-            toggleisUserAuthenticatedStatus: this
-              .toggleisUserAuthenticatedStatus
+            loginStatus: login,
+            toggleLoginStatus: this.toggleLoginStatus
           }}
         >
-          {isUserAuthenticated ? (
+          {login ? (
             <HomePageNavbar />
           ) : (
             <React.Fragment>
@@ -69,7 +67,7 @@ class App extends Component {
               <LastContainer />
             </React.Fragment>
           )}
-        </isUserAuthenticatedContext.Provider>
+        </LoginContext.Provider>
       </div>
     );
   }
